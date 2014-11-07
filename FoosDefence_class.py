@@ -139,12 +139,10 @@ class pull(position):
     def new_postitions(self):
         position1 = self.weighted_choice()
         position2 = self.weighted_choice()
-        
+        #print self.two_space_chance()
         ### Check to make sure not same (and greater the half space):
-        if abs(position1 - position2) <= self.two_space_chance():
-            return self.new_postitions()
-        
-        
+        if abs(position1 - position2) <= self.two_space_chance():  # Check to see if space between players is 1 (or) 2 half
+            return self.new_postitions()       
         #print "Currently: " + str(position1) + " and " + str(position2) 
         if self.check_crossing(position1, position2):
             if random.random() < self.cross_over_chance:
@@ -161,13 +159,14 @@ class pull(position):
             
             
     def two_space_chance(self):
+
         if self.level >= 8:
-            return 1
+            return 2
         else:
-            if random.random() < ((10 - self.level)/10):
-                return 2
+            if random.random() < ((10 - self.level)/float(10)):
+                return 3
             else:
-                return 1
+                return 2
 
     
     
