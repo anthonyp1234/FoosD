@@ -92,8 +92,11 @@ class snake(position):
     def new_postitions(self):
         position1 = self.weighted_choice()
         position2 = self.weighted_choice()
-        #print "Currently: " + str(position1) + " and " + str(position2) 
+        #print "Currently: " + str(position1) + " and " + str(position2)
+        if abs(position1 - position2) <= self.two_space_chance():  # Check to see if space between players is 1 (or) 2 half
+            return self.new_postitions()            
         if self.check_crossing(position1, position2):
+
             if random.random() < self.cross_over_chance:
                 #print "\nFirst if:"
                 #print str(position1) + " and " + str(position2)
@@ -108,12 +111,12 @@ class snake(position):
 
     def two_space_chance(self):
         if self.level >= 8:
-            return False
+            return 2
         else:
             if random.random() < ((10 - self.level)/10):
-                return True
+                return 3
             else:
-                return False
+                return 2
     
 
                          
