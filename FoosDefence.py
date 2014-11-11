@@ -30,8 +30,10 @@ for i in range(0,9):
 
 pygame.init()
 screen = pygame.display.set_mode(DISPLAY_SIZE)
-
-
+#surface_image = pygame.image.load(picture_files[1][5][0])
+#screen.blit(surface_image,(0,0))    ##surface_image.convert(screen)
+#pygame.display.flip()
+    
 def draw_pic(i,j):
     surface_image = pygame.image.load(picture_files[i][j][0])
     surface_image = pygame.transform.scale(surface_image, DISPLAY_SIZE)
@@ -86,6 +88,8 @@ while True:
     player_position.two_row_previous.append(value[1])
     print "{0}:{1}".format(value[0], value[1])
     draw_pic(value[0]-1, value[1]-1)
+    pygame.display.update()
+    
     
     
     
